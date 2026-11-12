@@ -1,0 +1,135 @@
+/* ============================================================
+   estilo.css - aparência do aplicativo
+   ============================================================ */
+
+/* ---- CORES DO APP ----
+   Variáveis ficam no :root. Para mudar uma cor em todo o app,
+   altere só aqui. Exemplo de uso mais abaixo: color: var(--pri) */
+:root {
+  --bg:  #f4f5f7;   /* fundo da página */
+  --card:#ffffff;   /* fundo dos cartões */
+  --tx:  #1b1f27;   /* cor do texto */
+  --mut: #666677;   /* texto secundário (cinza) */
+  --pri: #1f2a44;   /* cor principal (azul escuro dos botões) */
+  --acc: #f0a500;   /* cor de destaque (amarelo) */
+  --bd:  #d9dce2;   /* cor das bordas */
+}
+
+/* Modo escuro: usado automaticamente se o celular estiver em modo escuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:  #14171c;
+    --card:#1e222a;
+    --tx:  #eef0f3;
+    --mut: #99aaaa;
+    --pri: #3a4d7a;
+    --bd:  #333a46;
+  }
+}
+
+/* Faz largura e altura incluírem borda e espaçamento interno
+   (evita elementos "estourando" para fora da tela) */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 16px system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--tx);
+  padding-bottom: 40px;
+}
+
+/* ---- CABEÇALHO ---- */
+header {
+  background: #fff;
+  padding: 10px 14px;
+  display: flex;               /* coloca logo e título lado a lado */
+  align-items: center;
+  gap: 12px;
+  border-bottom: 3px solid var(--acc);
+  position: sticky;            /* fica grudado no topo ao rolar */
+  top: 0;
+  z-index: 5;
+}
+header img { height: 34px; }
+header h1  { font-size: 17px; margin: 0; color: #1f2a44; }
+
+/* Conteúdo principal, centralizado e com largura máxima */
+main { padding: 14px; max-width: 640px; margin: auto; }
+
+/* ---- CARTÃO (caixa branca com borda arredondada) ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+/* ---- CAMPOS DE FORMULÁRIO ---- */
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--mut);
+  margin: 10px 0 3px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  font-size: 16px;             /* 16px evita zoom automático no iPhone */
+  background: var(--bg);
+  color: var(--tx);
+}
+
+/* ---- BOTÕES ---- */
+button {
+  padding: 13px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--pri);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 10px;
+}
+/* Variações: usadas assim -> <button class="s"> */
+button.s { background: var(--bd); color: var(--tx); }   /* s = secundário (cinza) */
+button.r { background: #b3261e; }                       /* r = vermelho (apagar) */
+button.a { background: var(--acc); color: #111; }       /* a = amarelo (destaque) */
+
+/* Botões grandes do menu inicial */
+.menu button { margin: 0 0 10px; padding: 18px; text-align: left; }
+
+/* ---- DISPLAY DO PESO (número grande) ---- */
+.w {
+  font-size: 46px;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;   /* dígitos com largura igual, não "pulam" */
+}
+
+/* ---- LINHA COM ITENS LADO A LADO ---- */
+.row { display: flex; gap: 8px; }
+.row > * { flex: 1; }
+
+/* Texto pequeno e cinza */
+.m { color: var(--mut); font-size: 13px; }
+
+/* ---- TABELAS ---- */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+td, th { border-bottom: 1px solid var(--bd); padding: 5px; text-align: left; }
+
+/* Botão "← Menu" (sem fundo, parece um link) */
+.back {
+  background: none;
+  color: var(--pri);
+  width: auto;
+  padding: 4px 0;
+  margin: 0 0 8px;
+}
+
+/* Vídeo da câmera (leitura de QR Code) */
+video { width: 100%; border-radius: 8px; margin-top: 8px; }
